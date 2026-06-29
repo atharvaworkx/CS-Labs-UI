@@ -1,6 +1,4 @@
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei';
+import React from 'react';
 import { motion } from 'framer-motion';
 import '../styles/StudentIllustration.css';
 
