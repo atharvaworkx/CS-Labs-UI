@@ -1,404 +1,80 @@
-.illustration-3d-container {
+.illustration-container {
   position: relative;
   width: 100%;
-  height: 600px;
+  max-width: 1400px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 
-/* Main Illustration */
-.main-illustration {
-  position: relative;
-  z-index: 5;
-  width: 550px;
-  height: 550px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.student-image {
+.student-illustration-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 20px 60px rgba(106, 13, 37, 0.2));
-  animation: floatStudent 6s ease-in-out infinite;
+  filter: drop-shadow(0 10px 40px rgba(106, 13, 37, 0.06));
+  background: transparent;
+  mix-blend-mode: normal;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: scale(1.1);
 }
 
-@keyframes floatStudent {
+@keyframes floatIllustration {
   0%, 100% {
-    transform: translateY(0px);
+    transform: scale(1.1) translateY(0px);
   }
   50% {
-    transform: translateY(-15px);
+    transform: scale(1.1) translateY(-10px);
   }
 }
 
-/* Stat Cards */
-.stat-card {
-  position: absolute;
-  background: white;
-  border-radius: 16px;
-  padding: 20px 24px;
-  box-shadow: 0 10px 40px rgba(106, 13, 37, 0.12);
-  z-index: 10;
-  animation: floatCard 4s ease-in-out infinite;
-}
-
-@keyframes floatCard {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.goal-card {
-  top: 60px;
-  left: 40px;
-  width: 260px;
-  animation-delay: 0s;
-}
-
-.stat-label {
-  font-size: 0.85rem;
-  color: #888;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-.stat-value {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #6A0D25;
-  margin-bottom: 4px;
-}
-
-.stat-subtitle {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 12px;
-}
-
-.progress-graph {
-  width: 100%;
-  height: 30px;
-  margin-top: 8px;
-}
-
-.streak-card {
-  top: 80px;
-  right: 60px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 20px 28px;
-  animation-delay: 0.5s;
-}
-
-.flame-emoji {
-  font-size: 3rem;
-  animation: flameFlicker 1.5s ease-in-out infinite;
-}
-
-@keyframes flameFlicker {
-  0%, 100% {
-    transform: scale(1) rotate(-5deg);
-  }
-  50% {
-    transform: scale(1.1) rotate(5deg);
-  }
-}
-
-.streak-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.streak-label {
-  font-size: 0.85rem;
-  color: #888;
-  margin-bottom: 4px;
-}
-
-.streak-value {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #6A0D25;
-}
-
-.solved-card {
-  bottom: 120px;
-  right: 100px;
-  width: 240px;
-  animation-delay: 1s;
-}
-
-.mini-chart {
-  width: 100%;
-  height: 30px;
-  margin-top: 12px;
-}
-
-/* Plant Decoration */
-.plant-decoration {
-  position: absolute;
-  bottom: 60px;
-  left: 80px;
-  z-index: 4;
-  animation: floatPlant 5s ease-in-out infinite;
-}
-
-@keyframes floatPlant {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(2deg);
-  }
-}
-
-.plant-pot-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.plant-leaves {
-  position: relative;
-  width: 80px;
-  height: 70px;
-  margin-bottom: -10px;
-}
-
-.leaf {
-  position: absolute;
-  width: 35px;
-  height: 50px;
-  background: linear-gradient(135deg, #2d5016 0%, #4a7c2c 100%);
-  border-radius: 50% 0%;
-  transform-origin: bottom center;
-}
-
-.leaf:nth-child(1) {
-  left: 10px;
-  transform: rotate(-25deg);
-}
-
-.leaf:nth-child(2) {
-  left: 22px;
-  top: 5px;
-  transform: rotate(0deg);
-}
-
-.leaf:nth-child(3) {
-  left: 35px;
-  transform: rotate(25deg);
-}
-
-.plant-pot {
-  width: 70px;
-  height: 55px;
-  background: linear-gradient(135deg, #e8d4c8 0%, #c4a89a 100%);
-  border-radius: 0 0 12px 12px;
-  position: relative;
-}
-
-.plant-pot::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 75px;
-  height: 10px;
-  background: linear-gradient(135deg, #d4bfb3 0%, #b8998a 100%);
-  border-radius: 8px 8px 0 0;
-}
-
-/* Books Decoration */
-.books-decoration {
-  position: absolute;
-  bottom: 70px;
-  right: 140px;
-  z-index: 6;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  animation: floatBooks 4.5s ease-in-out infinite;
-}
-
-@keyframes floatBooks {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-7px) rotate(-1deg);
-  }
-}
-
-.book {
-  width: 140px;
-  height: 32px;
-  background: linear-gradient(135deg, #6A0D25 0%, #8A1538 100%);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(106, 13, 37, 0.3);
-  position: relative;
-}
-
-.book::before {
-  content: '';
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 70%;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
-}
-
-.book span {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.book-1 {
-  transform: rotate(-2deg);
-}
-
-.book-2 {
-  width: 145px;
-  transform: rotate(1deg);
-}
-
-.book-3 {
-  width: 150px;
-  transform: rotate(-1deg);
-}
-
-/* Coffee Mug */
-.coffee-decoration {
-  position: absolute;
-  bottom: 90px;
-  right: 60px;
-  z-index: 7;
-  animation: floatCoffee 3.5s ease-in-out infinite;
-}
-
-@keyframes floatCoffee {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-}
-
-.mug {
-  width: 70px;
-  height: 75px;
-  background: linear-gradient(135deg, #6A0D25 0%, #8A1538 100%);
-  border-radius: 0 0 12px 12px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 20px rgba(106, 13, 37, 0.3);
-}
-
-.mug::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 75px;
-  height: 15px;
-  background: linear-gradient(135deg, #5a0a1f 0%, #7a1230 100%);
-  border-radius: 8px 8px 0 0;
-}
-
-.mug-handle {
-  position: absolute;
-  right: -22px;
-  top: 20px;
-  width: 28px;
-  height: 35px;
-  border: 5px solid #6A0D25;
-  border-left: none;
-  border-radius: 0 50% 50% 0;
-}
-
-.mug-code {
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 700;
-  font-family: 'Courier New', monospace;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Floating particles */
-.illustration-3d-container::before,
-.illustration-3d-container::after {
-  content: '✨';
-  position: absolute;
-  font-size: 1.5rem;
-  opacity: 0;
-  animation: sparkle 4s ease-in-out infinite;
-}
-
-.illustration-3d-container::before {
-  top: 30%;
-  left: 15%;
-  animation-delay: 0s;
-}
-
-.illustration-3d-container::after {
-  top: 40%;
-  right: 20%;
-  animation-delay: 2s;
-}
-
-@keyframes sparkle {
-  0%, 100% {
-    opacity: 0;
-    transform: translateY(0px) scale(0.5);
-  }
-  50% {
-    opacity: 0.6;
-    transform: translateY(-20px) scale(1);
-  }
+.illustration-container {
+  animation: floatIllustration 8s ease-in-out infinite;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .illustration-3d-container {
-    height: 500px;
-    transform: scale(0.85);
+  .illustration-container {
+    max-width: 950px;
   }
   
-  .goal-card {
-    width: 220px;
-    left: 20px;
+  .student-illustration-image {
+    transform: scale(1.05);
   }
   
-  .solved-card {
-    width: 200px;
-    right: 80px;
+  @keyframes floatIllustration {
+    0%, 100% {
+      transform: scale(1.05) translateY(0px);
+    }
+    50% {
+      transform: scale(1.05) translateY(-10px);
+    }
   }
 }
 
 @media (max-width: 768px) {
-  .illustration-3d-container {
+  .illustration-container {
+    max-width: 700px;
+    padding: 10px;
+  }
+  
+  .student-illustration-image {
+    transform: scale(1);
+  }
+  
+  @keyframes floatIllustration {
+    0%, 100% {
+      transform: scale(1) translateY(0px);
+    }
+    50% {
+      transform: scale(1) translateY(-10px);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .illustration-container {
     display: none;
   }
 }
