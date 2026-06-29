@@ -5,7 +5,7 @@ import {
   FaUsers, FaBook, FaChartLine, FaArrowRight, FaDatabase, FaCode, 
   FaProjectDiagram, FaNetworkWired, FaServer, FaBrain, FaMicrochip,
   FaClipboardList, FaFileAlt, FaCertificate, FaRocket, FaTrophy,
-  FaChartLine as FaChart, FaCheckCircle, FaRobot, FaQuestionCircle,
+  FaChartLine as FaChart, FaRobot, FaQuestionCircle,
   FaUpload, FaEdit
 } from 'react-icons/fa';
 import StudentIllustration from './StudentIllustration';
