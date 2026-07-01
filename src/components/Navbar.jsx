@@ -3,21 +3,19 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaHome,
-  FaBook,
-  FaBlog,
-  FaPhone,
   FaLock,
   FaUserCircle,
   FaGraduationCap,
   FaSearch,
   FaBars,
   FaTimes,
-  FaChartLine,
-  FaHeart,
-  FaCog,
   FaSignOutAlt,
   FaBell,
-  FaStar
+  FaStar,
+  FaUsers,
+  FaBookOpen,
+  FaFlask,
+  FaProjectDiagram
 } from 'react-icons/fa';
 import '../styles/Navbar.css';
 
@@ -32,18 +30,19 @@ const Navbar = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const navItems = [
-    { icon: FaHome, text: 'Home', path: '/' },
-    { icon: FaBook, text: 'Courses', path: '/courses' },
-    { icon: FaBlog, text: 'Blog', path: '/blog' },
-    { icon: FaPhone, text: 'Contact', path: '/contact' }
+    { icon: FaHome, text: 'Home', path: '/', hash: '' },
+    { icon: FaBookOpen, text: 'Our Manifesto', path: '/', hash: 'manifesto' },
+    { icon: FaUsers, text: 'Community', path: '/', hash: 'community' },
+    { icon: FaGraduationCap, text: 'Incubation Tracks', path: '/', hash: 'tracks' },
+    { icon: FaFlask, text: 'Software Labs', path: '/', hash: 'labs' }
   ];
 
   const profileMenuItems = [
     { icon: FaUserCircle, text: 'My Profile', path: '/profile' },
-    { icon: FaBook, text: 'My Courses', path: '/my-courses' },
-    { icon: FaChartLine, text: 'Progress Dashboard', path: '/progress' },
-    { icon: FaHeart, text: 'Saved Courses', path: '/saved' },
-    { icon: FaCog, text: 'Settings', path: '/settings' },
+    { icon: FaProjectDiagram, text: 'My Tracks', path: '/my-courses' },
+    { icon: FaProjectDiagram, text: 'Progress Dashboard', path: '/progress' },
+    { icon: FaProjectDiagram, text: 'Saved Programs', path: '/saved' },
+    { icon: FaProjectDiagram, text: 'Settings', path: '/settings' },
     { icon: FaSignOutAlt, text: 'Logout', path: '/logout', action: 'logout' }
   ];
 
@@ -78,6 +77,38 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      section.scrollIntoView({ behavior: 'auto', block: 'start' });
+      return true;
+    }
+
+    const homeContainer = document.querySelector('.home-container');
+    if (sectionId === 'home' && homeContainer) {
+      homeContainer.scrollTo({ top: 0, behavior: 'auto' });
+      return true;
+    }
+
+    return false;
+  };
+
+  const handleSectionNavigation = (item) => {
+    const targetHash = item.hash || '';
+    navigate(targetHash ? `/${targetHash}` : '/', { replace: true });
+    scrollToSection(targetHash || 'home');
+    setIsMenuOpen(false);
+  };
+
+  const isSectionActive = (item) => {
+    if (item.hash) {
+      return location.pathname === '/' && location.hash === `#${item.hash}`;
+    }
+
+    return location.pathname === '/' && !location.hash;
+  };
+
   const handleProfileAction = (item) => {
     if (item.action === 'logout') {
       setIsLoggedIn(false);
@@ -101,7 +132,10 @@ const Navbar = () => {
           <motion.div
             className="navbar-brand"
             whileHover={{ scale: 1.05 }}
-            onClick={() => handleNavigation('/')}
+            onClick={() => {
+              handleNavigation('/');
+              scrollToSection('home');
+            }}
           >
             <motion.div
               className="brand-icon"
@@ -134,10 +168,10 @@ const Navbar = () => {
             <ul className="nav-menu">
               {navItems.map((item, index) => {
                 const Icon = item.icon;
-                const isActive = location.pathname === item.path;
+                const isActive = isSectionActive(item);
                 return (
                   <motion.li
-                    key={item.path}
+                    key={`${item.text}-${item.hash || 'home'}`}
                     className={`nav-item ${isActive ? 'active' : ''}`}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -145,7 +179,7 @@ const Navbar = () => {
                   >
                     <motion.button
                       className="nav-link"
-                      onClick={() => handleNavigation(item.path)}
+                      onClick={() => handleSectionNavigation(item)}
                       whileHover={{ y: -3 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -340,12 +374,12 @@ const Navbar = () => {
               <div className="mobile-menu">
                 {navItems.map((item, index) => {
                   const Icon = item.icon;
-                  const isActive = location.pathname === item.path;
+                  const isActive = isSectionActive(item);
                   return (
                     <motion.button
-                      key={item.path}
+                      key={`${item.text}-${item.hash || 'home'}`}
                       className={`mobile-nav-item ${isActive ? 'active' : ''}`}
-                      onClick={() => handleNavigation(item.path)}
+                      onClick={() => handleSectionNavigation(item)}
                       initial={{ opacity: 0, x: -50 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}

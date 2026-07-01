@@ -7,6 +7,9 @@ import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
+import Terms from './components/Terms';
+import Privacy from './components/Privacy';
+import Refund from './components/Refund';
 
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
               <Route path="/progress" element={<Dashboard />} />
               <Route path="/saved" element={<Dashboard />} />
               <Route path="/settings" element={<Dashboard />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/refund" element={<Refund />} />
             </Routes>
           </>
         } />

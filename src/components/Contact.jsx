@@ -30,12 +30,12 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    {
-      icon: FaEnvelope,
-      title: 'Email Us',
-      content: 'support@cslabs.com',
-      subtext: 'We reply within 24 hours'
-    },
+    // {
+    //   icon: FaEnvelope,
+    //   title: 'Email Us',
+    //   content: 'support@cslabs.com',
+    //   subtext: 'We reply within 24 hours'
+    // },
     {
       icon: FaPhone,
       title: 'Call Us',
